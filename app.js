@@ -4,7 +4,7 @@ const fs = require('fs'),
       Bottleneck = require('bottleneck'),
       db = require('./db'),
       KEYS = require('./keys'),
-      jsf = require('./json-find');
+      jsf = require('./json-find'); // should work
  
 /*
 1. make first request
@@ -46,6 +46,7 @@ function getAPI(url){
 
 /* Object -> Object */
 function collectArticleData(result){
+    // tokenize article text here and insert into DB?
     let article = Object.assign({}, { id: jsf.checkKey(result.blocks.body, 'id') });
     Object.assign(article, jsf.findValues(result, 'webUrl', 'webTitle', 'sectionName', 
                                                                         'bodyTextSummary'));
